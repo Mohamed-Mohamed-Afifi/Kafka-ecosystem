@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @Setter
@@ -24,7 +25,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeDto>> getAllEmployees(@ModelAttribute EmployeeDto employeeDto){
+    public ResponseEntity<Set<EmployeeDto>> getAllEmployees(@ModelAttribute EmployeeDto employeeDto){
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(employeeService.filterEmployees(employeeDto));
     }
     @PutMapping("/{id}")
@@ -40,7 +41,7 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(employeeService.deleteEmployee(id));
     }
     @GetMapping("{id}")
-    public ResponseEntity<List<EmployeeDto>> getEmployee(@PathVariable Integer id,@ModelAttribute EmployeeDto employeeDto){
+    public ResponseEntity<Set<EmployeeDto>> getEmployee(@PathVariable Integer id,@ModelAttribute EmployeeDto employeeDto){
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(employeeService.filterEmployees(employeeDto));
     }
 

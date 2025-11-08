@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,17 +18,17 @@ import java.util.stream.Collectors;
 public class EmployeeServiceEmp implements EmployeeService{
     private final EmployeeMapper employeeMapper;
     @Override
-    public List<EmployeeDto> filterEmployees(EmployeeDto employeeDto) {
+    public Set<EmployeeDto> filterEmployees(EmployeeDto employeeDto) {
 //        Here Make Quritea query that take all args and start filter
 
-            List<Employee> emps = new ArrayList<>();
+            Set<Employee> emps = new HashSet<>();
             Employee em=new Employee();
             em.setId(15512);
             em.setName("Mohamed");
             em.setSalary("15000");
             emps.add(em);
 //            Stream On Employees
-List<EmployeeDto> employeeDtos=employeeMapper.map(emps);
+Set<EmployeeDto> employeeDtos=employeeMapper.map(emps);
             return employeeDtos;
 
     }
