@@ -15,10 +15,10 @@ public interface EmployeeMapper {
     @Mapping(source = "name",target = "employeeName")
     @Mapping(source = "salary",target = "employeeSalary")
     EmployeeDto map(Employee employee);
-    List<EmployeeDto> map(List<Employee> employees);
+    Set<EmployeeDto> map(Set<Employee> employees);
 
     @Mapping(target = "name",source = "employeeName")
     @Mapping(target = "salary",source = "employeeSalary")
     Employee unmap(EmployeeDto employeeDto);
-    List<Employee> unmap(List<EmployeeDto> employees);
+    Set<Employee> unmap(Set<EmployeeDto> employees);
 }

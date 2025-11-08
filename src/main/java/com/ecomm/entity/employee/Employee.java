@@ -1,5 +1,7 @@
 package com.ecomm.entity.employee;
 
+import com.ecomm.entity.base.BaseEntity;
+import com.ecomm.entity.department.Department;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -10,7 +12,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Employee {
+public class Employee extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -20,4 +22,8 @@ public class Employee {
     @NonNull
     @Column(name = "salary")
     private String salary;
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private Department department;
+
 }

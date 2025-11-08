@@ -8,26 +8,28 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService{
     private final DepartmentMapper departmentMapper;
     @Override
-    public List<DepartmentDto> getDepartments(DepartmentDto departmentDto) {
+    public Set<DepartmentDto> getDepartments(DepartmentDto departmentDto) {
         Employee employee=new Employee();
         employee.setName("samon");
         employee.setSalary("18000");
         employee.setId(120);
-        List<Employee> employees=new ArrayList<>();
+        Set<Employee> employees=new HashSet<>();
         employees.add(employee);
         Department department=new Department();
         department.setId(1);
         department.setName("HR");
         department.setEmployees(employees);
 
-        List<Department> departments=new ArrayList<>();
+        Set<Department> departments=new HashSet<>();
         departments.add(department);
 
         return departmentMapper.map(departments);

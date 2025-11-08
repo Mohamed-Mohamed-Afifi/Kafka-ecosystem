@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/departments")
@@ -20,7 +21,7 @@ public class DepartmentController {
     private final DepartmentService departmentService;
 
     @GetMapping
-    public ResponseEntity<List<DepartmentDto>> getDepartment(@ModelAttribute DepartmentDto departmentDto){
+    public ResponseEntity<Set<DepartmentDto>> getDepartment(@ModelAttribute DepartmentDto departmentDto){
         return ResponseEntity.status(HttpStatus.OK).body(departmentService.getDepartments(departmentDto));
     }
 }
